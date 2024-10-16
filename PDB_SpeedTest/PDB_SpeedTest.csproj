@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Bogus, Version=35.6.1.0, Culture=neutral, PublicKeyToken=fa1bb3f3f218129a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Bogus.35.6.1\lib\net40\Bogus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -62,9 +65,12 @@
     <Compile Include="Models\BasicDataDto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DBConnectionSerice.cs" />
+    <Compile Include="Services\DBConnectionService.cs" />
+    <Compile Include="Services\GenerateDummyDataService.cs" />
     <Compile Include="Services\ReadFromFileService.cs" />
-    <Compile Include="Services\WriteToFileService.cs" />
+    <Compile Include="Services\WriteToBinFileService.cs" />
+    <Compile Include="Services\WriteToCsvFileService.cs" />
+    <Compile Include="Services\WriteToTextFileService.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,6 +86,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

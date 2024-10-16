@@ -44,6 +44,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            this.lbl_TimeTxt = new System.Windows.Forms.Label();
+            this.lbl_TimeBin = new System.Windows.Forms.Label();
+            this.lbl_TimeCSV = new System.Windows.Forms.Label();
+            this.lbl_TimeSQL = new System.Windows.Forms.Label();
+            this.lbl_InputWarning = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +59,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TimeSQL, 1, 4);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TimeTxt, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TimeCSV, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label9, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.lbl_TimeBin, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label8, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label5, 0, 2);
@@ -155,6 +164,7 @@
             this.btn_submitAmount.TabIndex = 12;
             this.btn_submitAmount.Text = "Zatwierdź";
             this.btn_submitAmount.UseVisualStyleBackColor = true;
+            this.btn_submitAmount.Click += new System.EventHandler(this.btn_submitAmount_Click);
             // 
             // txtBox_outputAmount
             // 
@@ -213,6 +223,52 @@
             this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
             this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
+            // lbl_TimeTxt
+            // 
+            this.lbl_TimeTxt.AutoSize = true;
+            this.lbl_TimeTxt.Cursor = System.Windows.Forms.Cursors.PanWest;
+            this.lbl_TimeTxt.Location = new System.Drawing.Point(273, 55);
+            this.lbl_TimeTxt.Name = "lbl_TimeTxt";
+            this.lbl_TimeTxt.Size = new System.Drawing.Size(56, 25);
+            this.lbl_TimeTxt.TabIndex = 14;
+            this.lbl_TimeTxt.Text = "ssss";
+            // 
+            // lbl_TimeBin
+            // 
+            this.lbl_TimeBin.AutoSize = true;
+            this.lbl_TimeBin.Location = new System.Drawing.Point(273, 110);
+            this.lbl_TimeBin.Name = "lbl_TimeBin";
+            this.lbl_TimeBin.Size = new System.Drawing.Size(70, 25);
+            this.lbl_TimeBin.TabIndex = 14;
+            this.lbl_TimeBin.Text = "label7";
+            // 
+            // lbl_TimeCSV
+            // 
+            this.lbl_TimeCSV.AutoSize = true;
+            this.lbl_TimeCSV.Location = new System.Drawing.Point(273, 165);
+            this.lbl_TimeCSV.Name = "lbl_TimeCSV";
+            this.lbl_TimeCSV.Size = new System.Drawing.Size(82, 25);
+            this.lbl_TimeCSV.TabIndex = 15;
+            this.lbl_TimeCSV.Text = "label12";
+            // 
+            // lbl_TimeSQL
+            // 
+            this.lbl_TimeSQL.AutoSize = true;
+            this.lbl_TimeSQL.Location = new System.Drawing.Point(273, 220);
+            this.lbl_TimeSQL.Name = "lbl_TimeSQL";
+            this.lbl_TimeSQL.Size = new System.Drawing.Size(82, 25);
+            this.lbl_TimeSQL.TabIndex = 16;
+            this.lbl_TimeSQL.Text = "label13";
+            // 
+            // lbl_InputWarning
+            // 
+            this.lbl_InputWarning.AutoSize = true;
+            this.lbl_InputWarning.Location = new System.Drawing.Point(1216, 495);
+            this.lbl_InputWarning.Name = "lbl_InputWarning";
+            this.lbl_InputWarning.Size = new System.Drawing.Size(70, 25);
+            this.lbl_InputWarning.TabIndex = 14;
+            this.lbl_InputWarning.Text = "label7";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -220,6 +276,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1894, 1009);
+            this.Controls.Add(this.lbl_InputWarning);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_submitAmount);
             this.Controls.Add(this.txtBox_outputAmount);
@@ -256,5 +313,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button1;
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        private System.Windows.Forms.Label lbl_TimeTxt;
+        private System.Windows.Forms.Label lbl_TimeCSV;
+        private System.Windows.Forms.Label lbl_TimeBin;
+        private System.Windows.Forms.Label lbl_TimeSQL;
+        private System.Windows.Forms.Label lbl_InputWarning;
     }
 }
