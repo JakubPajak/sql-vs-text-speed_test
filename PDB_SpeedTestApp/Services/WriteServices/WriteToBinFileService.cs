@@ -1,4 +1,5 @@
 ﻿using PDB_SpeedTest.Models;
+using PDB_SpeedTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,19 +8,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PDB_SpeedTest.Services
+namespace PDB_SpeedTestApp.Services.WriteServices
 {
-    internal class WriteToCsvFileService
+    internal class WriteToBinFileService
     {
-        public WriteToCsvFileService()
+        public WriteToBinFileService()
         {
-
         }
-        public double WriteToCsvFile(int amount)
+
+        public double WriteToBinaryFile(int amount)
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string folderPath = Path.Combine(desktopPath, "PDB");
-            string filePath = Path.Combine(folderPath, "WriteToFileAsync.csv");
+            string filePath = Path.Combine(folderPath, "WriteToFileAsync.bin");
 
             if (!Directory.Exists(folderPath))
             {
@@ -32,25 +33,25 @@ namespace PDB_SpeedTest.Services
             double elapsedTime = 0;
             List<BasicDataDto> data = generateDummyData.GenerateDummyData(amount);
 
-            // Zapis do pliku CSV
-            using (StreamWriter writer = new StreamWriter(filePath))
+            using (FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (BinaryWriter writer = new BinaryWriter(fs))
             {
                 sw.Start();
-
-                // Zapis nagłówków kolumn
-                writer.WriteLine("Id,Name,Surname,DateOfBirth,Phone");
-
                 foreach (var item in data)
                 {
-                    string line = $"{item.Id},{item.Name},{item.Surname},{item.DateOfBirth},{item.Phone}";
-                    writer.WriteLine(line);
+                    WriteBinary(writer, item);
                 }
-
                 sw.Stop();
             }
 
             elapsedTime = sw.Elapsed.TotalMilliseconds;
             return elapsedTime;
+        }
+        private void WriteBinary(BinaryWriter writer, BasicDataDto item)
+        {
+            writer.Write(item.Name);
+            writer.Write(item.Surname);
+            writer.Write(item.Phone);
         }
     }
 }

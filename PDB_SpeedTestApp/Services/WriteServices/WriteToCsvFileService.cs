@@ -1,34 +1,31 @@
 ﻿using PDB_SpeedTest.Models;
+using PDB_SpeedTest.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Bogus;
-using Bogus.DataSets;
-using System.Threading;
-using System.Diagnostics;
-
-namespace PDB_SpeedTest.Services
+namespace PDB_SpeedTestApp.Services.WriteServices
 {
-    internal class WriteToTextFileService
+    internal class WriteToCsvFileService
     {
-        public WriteToTextFileService()
-        { }
+        public WriteToCsvFileService()
+        {
 
-        public double WriteToTextFile(int amount)
+        }
+        public double WriteToCsvFile(int amount)
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string folderPath = Path.Combine(desktopPath, "PDB");
-            string filePath = Path.Combine(folderPath, "WriteToTextFile.txt");
+            string filePath = Path.Combine(folderPath, "WriteToFileAsync.csv");
 
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
             }
-
 
             GenerateDummyDataService generateDummyData = new GenerateDummyDataService();
 
@@ -36,16 +33,23 @@ namespace PDB_SpeedTest.Services
             double elapsedTime = 0;
             List<BasicDataDto> data = generateDummyData.GenerateDummyData(amount);
 
-            using (StreamWriter outputFile = new StreamWriter(filePath))
+            // Zapis do pliku CSV
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
                 sw.Start();
+
+                // Zapis nagłówków kolumn
+                writer.WriteLine("Id,Name,Surname,DateOfBirth,Phone");
+
                 foreach (var item in data)
                 {
-                    outputFile.WriteLine(item.ToString());
+                    string line = $"{item.Name},{item.Surname},{item.DateOfBirth},{item.Phone}";
+                    writer.WriteLine(line);
                 }
+
                 sw.Stop();
-                outputFile.Flush();
             }
+
             elapsedTime = sw.Elapsed.TotalMilliseconds;
             return elapsedTime;
         }

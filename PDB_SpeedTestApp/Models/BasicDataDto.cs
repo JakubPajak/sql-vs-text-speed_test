@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace PDB_SpeedTest.Models
 {
-    internal class BasicDataDto
+    public class BasicDataDto
     {
-        public int Id { get; set; }
-
         public string Name { get; set; }
 
         public string Surname { get; set; }
@@ -20,7 +18,7 @@ namespace PDB_SpeedTest.Models
 
         public override string ToString()
         {
-            return $"{this.Id} | {this.Name} | {this.Surname} | {this.DateOfBirth.ToString()} | {this.Phone.ToString()}";
+            return $"{this.Name} | {this.Surname} | {this.DateOfBirth.ToString()} | {this.Phone.ToString()}";
         }
     }
 }

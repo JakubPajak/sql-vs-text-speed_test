@@ -1,11 +1,15 @@
-using PDB_SpeedTest.Services;
+using PDB_SpeedTestApp.Services;
+using PDB_SpeedTestApp.Services.WriteServices;
 
 namespace PDB_SpeedTestApp
 {
     public partial class Form1 : Form
     {
-        public Form1()
+        private readonly AppDbContext _context;
+
+        public Form1(AppDbContext context)
         {
+            _context = context;
             InitializeComponent();
             lbl_TimeBin.Text = "";
             lbl_TimeCSV.Text = "";
@@ -19,6 +23,7 @@ namespace PDB_SpeedTestApp
             WriteToTextFileService writeToTextFileService = new WriteToTextFileService();
             WriteToBinFileService writeToBinFileService = new WriteToBinFileService();
             WriteToCsvFileService writeToCsvFileService = new WriteToCsvFileService();
+            WriteToDbService writeToDbService = new WriteToDbService(_context);
 
             int amount = txtBox_inputAmount.Text.Length > 0 ? int.Parse(txtBox_inputAmount.Text) : 0;
 
@@ -47,6 +52,12 @@ namespace PDB_SpeedTestApp
                 if (elapsedTime != 0.0)
                 {
                     lbl_TimeCSV.Text = elapsedTime.ToString();
+                }
+
+                elapsedTime = writeToDbService.WriteToDatabase(amount);
+                if (elapsedTime != 0.0)
+                {
+                    lbl_TimeSQL.Text = elapsedTime.ToString();
                 }
             }
         }

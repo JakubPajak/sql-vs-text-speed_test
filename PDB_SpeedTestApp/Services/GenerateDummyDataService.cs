@@ -16,9 +16,9 @@ namespace PDB_SpeedTest.Services
         public List<BasicDataDto> GenerateDummyData(int amount)
         {
             var faker = new Faker<BasicDataDto>()
-                .RuleFor(o => o.Id, f => f.IndexFaker)
                 .RuleFor(o => o.Name, f => f.Person.FirstName)
                 .RuleFor(o => o.Surname, f => f.Person.LastName)
+                .RuleFor(o => o.DateOfBirth, f => f.Person.DateOfBirth)
                 .RuleFor(o => o.Phone, f => f.Person.Phone);
 
             List<BasicDataDto> dummyCollection = faker.Generate(amount);
