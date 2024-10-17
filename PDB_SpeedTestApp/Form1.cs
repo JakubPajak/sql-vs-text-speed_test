@@ -1,19 +1,10 @@
-ï»¿using PDB_SpeedTest.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using PDB_SpeedTest.Services;
 
-namespace PDB_SpeedTest
+namespace PDB_SpeedTestApp
 {
-    public partial class Form2 : Form
+    public partial class Form1 : Form
     {
-        public Form2()
+        public Form1()
         {
             InitializeComponent();
             lbl_TimeBin.Text = "";
@@ -23,19 +14,19 @@ namespace PDB_SpeedTest
             lbl_InputWarning.Text = "";
         }
 
-        private void btn_submitAmount_Click(object sender, EventArgs e)
+        private void btn_submitAmount_Click_1(object sender, EventArgs e)
         {
             WriteToTextFileService writeToTextFileService = new WriteToTextFileService();
             WriteToBinFileService writeToBinFileService = new WriteToBinFileService();
             WriteToCsvFileService writeToCsvFileService = new WriteToCsvFileService();
 
             int amount = txtBox_inputAmount.Text.Length > 0 ? int.Parse(txtBox_inputAmount.Text) : 0;
-            
+
             double elapsedTime = 0.0;
 
-            if (amount == 0)
+            if (amount == 0.0)
             {
-                lbl_InputWarning.Text = "UWAGA! ProszÄ™ wprowadziÄ‡ poprawnÄ… iloÅ›Ä‡ danych do generacji ( >0 ).";
+                lbl_InputWarning.Text = "UWAGA! Proszê wprowadziæ poprawn¹ iloœæ danych do generacji ( >0 ).";
                 lbl_InputWarning.ForeColor = System.Drawing.Color.Red;
             }
             else

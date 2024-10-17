@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PDB_SpeedTest.Services
+namespace PDB_SpeedTestApp.Services
 {
-    internal class DBConnectionService
+    internal class ReadFromFileService
     {
-
     }
 }

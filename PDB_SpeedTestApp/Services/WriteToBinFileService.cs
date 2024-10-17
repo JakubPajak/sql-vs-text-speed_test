@@ -38,7 +38,7 @@ namespace PDB_SpeedTest.Services
                 sw.Start();
                 foreach (var item in data)
                 {
-                    WriteBinary(writer, item); 
+                    WriteBinary(writer, item);
                 }
                 sw.Stop();
             }

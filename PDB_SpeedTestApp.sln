@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDB_SpeedTest", "PDB_SpeedTest\PDB_SpeedTest.csproj", "{D00B7000-5ED9-4B26-A727-1D18500545ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDB_SpeedTestApp", "PDB_SpeedTestApp\PDB_SpeedTestApp.csproj", "{73F1915B-20A6-48D3-8230-E38A21C8008C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D00B7000-5ED9-4B26-A727-1D18500545ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D00B7000-5ED9-4B26-A727-1D18500545ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D00B7000-5ED9-4B26-A727-1D18500545ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D00B7000-5ED9-4B26-A727-1D18500545ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F1915B-20A6-48D3-8230-E38A21C8008C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F1915B-20A6-48D3-8230-E38A21C8008C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F1915B-20A6-48D3-8230-E38A21C8008C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F1915B-20A6-48D3-8230-E38A21C8008C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2673589A-16DA-43F2-B640-77FD292D73A0}
+		SolutionGuid = {CC0D38F6-5743-4400-98AB-F6C63977D147}
 	EndGlobalSection
 EndGlobal
