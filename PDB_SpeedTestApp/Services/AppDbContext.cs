@@ -11,6 +11,10 @@ namespace PDB_SpeedTestApp.Services
     public class AppDbContext : DbContext
     {
         public DbSet<BasicDataDto> basicDataDtos {  get; set; }
+
+        public AppDbContext()
+        {
+        }
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
@@ -24,6 +28,8 @@ namespace PDB_SpeedTestApp.Services
         {
             modelBuilder.Entity<BasicDataDto>(entity =>
             {
+                entity.HasKey(e => e.Id);
+
                 entity.Property(e => e.Name)
                 .IsRequired();
 
@@ -32,8 +38,6 @@ namespace PDB_SpeedTestApp.Services
 
                 entity.Property(e => e.Phone)
                 .IsRequired();
-
-                entity.HasNoKey();
             });
 
             base.OnModelCreating(modelBuilder);

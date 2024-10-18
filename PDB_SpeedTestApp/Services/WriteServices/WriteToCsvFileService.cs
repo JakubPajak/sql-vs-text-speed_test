@@ -1,5 +1,5 @@
 ﻿using PDB_SpeedTest.Models;
-using PDB_SpeedTest.Services;
+using PDB_SpeedTestApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +20,7 @@ namespace PDB_SpeedTestApp.Services.WriteServices
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string folderPath = Path.Combine(desktopPath, "PDB");
-            string filePath = Path.Combine(folderPath, "WriteToFileAsync.csv");
+            string filePath = Path.Combine(folderPath, "CsvFileTest.csv");
 
             if (!Directory.Exists(folderPath))
             {
@@ -43,7 +43,7 @@ namespace PDB_SpeedTestApp.Services.WriteServices
 
                 foreach (var item in data)
                 {
-                    string line = $"{item.Name},{item.Surname},{item.DateOfBirth},{item.Phone}";
+                    string line = $"{item.Id},{item.Name},{item.Surname},{item.DateOfBirth},{item.Phone}";
                     writer.WriteLine(line);
                 }
 

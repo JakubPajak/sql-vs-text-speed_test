@@ -10,7 +10,7 @@ using Bogus;
 using Bogus.DataSets;
 using System.Threading;
 using System.Diagnostics;
-using PDB_SpeedTest.Services;
+using PDB_SpeedTestApp.Helpers;
 
 namespace PDB_SpeedTestApp.Services.WriteServices
 {
@@ -23,7 +23,7 @@ namespace PDB_SpeedTestApp.Services.WriteServices
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string folderPath = Path.Combine(desktopPath, "PDB");
-            string filePath = Path.Combine(folderPath, "WriteToTextFile.txt");
+            string filePath = Path.Combine(folderPath, "TextFileTest.txt");
 
             if (!Directory.Exists(folderPath))
             {

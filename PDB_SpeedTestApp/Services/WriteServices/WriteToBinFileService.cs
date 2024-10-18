@@ -1,5 +1,5 @@
 ﻿using PDB_SpeedTest.Models;
-using PDB_SpeedTest.Services;
+using PDB_SpeedTestApp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +20,7 @@ namespace PDB_SpeedTestApp.Services.WriteServices
         {
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
             string folderPath = Path.Combine(desktopPath, "PDB");
-            string filePath = Path.Combine(folderPath, "WriteToFileAsync.bin");
+            string filePath = Path.Combine(folderPath, "BinFileTest.bin");
 
             if (!Directory.Exists(folderPath))
             {
@@ -51,6 +51,7 @@ namespace PDB_SpeedTestApp.Services.WriteServices
         {
             writer.Write(item.Name);
             writer.Write(item.Surname);
+            writer.Write(item.DateOfBirth.ToString());
             writer.Write(item.Phone);
         }
     }

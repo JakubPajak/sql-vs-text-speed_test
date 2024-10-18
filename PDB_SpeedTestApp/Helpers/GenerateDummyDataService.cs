@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PDB_SpeedTest.Services
+namespace PDB_SpeedTestApp.Helpers
 {
     internal class GenerateDummyDataService
     {

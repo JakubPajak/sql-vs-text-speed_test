@@ -32,11 +32,15 @@
             label2 = new Label();
             label3 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            lbl_CSVSize = new Label();
             lbl_TimeSQL = new Label();
+            lbl_SQLSize = new Label();
             lbl_TimeTxt = new Label();
             label11 = new Label();
             lbl_TimeCSV = new Label();
+            lbl_BinSize = new Label();
             label9 = new Label();
+            lbl_TxtSize = new Label();
             lbl_TimeBin = new Label();
             label8 = new Label();
             label10 = new Label();
@@ -48,6 +52,10 @@
             txtBox_outputAmount = new TextBox();
             btn_submitAmount = new Button();
             lbl_InputWarning = new Label();
+            lbl_ReadTxt = new Label();
+            lbl_ReadBin = new Label();
+            lbl_ReadSQL = new Label();
+            lbl_ReadCsv = new Label();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -63,7 +71,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(164, 443);
+            label2.Location = new Point(166, 404);
             label2.Name = "label2";
             label2.Size = new Size(337, 32);
             label2.TabIndex = 1;
@@ -72,7 +80,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(729, 443);
+            label3.Location = new Point(731, 404);
             label3.Name = "label3";
             label3.Size = new Size(324, 32);
             label3.TabIndex = 2;
@@ -85,11 +93,19 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel1.Controls.Add(lbl_ReadSQL, 2, 4);
+            tableLayoutPanel1.Controls.Add(lbl_ReadCsv, 2, 3);
+            tableLayoutPanel1.Controls.Add(lbl_CSVSize, 3, 3);
             tableLayoutPanel1.Controls.Add(lbl_TimeSQL, 1, 4);
+            tableLayoutPanel1.Controls.Add(lbl_ReadBin, 2, 2);
+            tableLayoutPanel1.Controls.Add(lbl_SQLSize, 3, 4);
+            tableLayoutPanel1.Controls.Add(lbl_ReadTxt, 2, 1);
             tableLayoutPanel1.Controls.Add(lbl_TimeTxt, 1, 1);
             tableLayoutPanel1.Controls.Add(label11, 3, 0);
             tableLayoutPanel1.Controls.Add(lbl_TimeCSV, 1, 3);
+            tableLayoutPanel1.Controls.Add(lbl_BinSize, 3, 2);
             tableLayoutPanel1.Controls.Add(label9, 1, 0);
+            tableLayoutPanel1.Controls.Add(lbl_TxtSize, 3, 1);
             tableLayoutPanel1.Controls.Add(lbl_TimeBin, 1, 2);
             tableLayoutPanel1.Controls.Add(label8, 2, 0);
             tableLayoutPanel1.Controls.Add(label10, 0, 3);
@@ -108,6 +124,15 @@
             tableLayoutPanel1.Size = new Size(1289, 303);
             tableLayoutPanel1.TabIndex = 3;
             // 
+            // lbl_CSVSize
+            // 
+            lbl_CSVSize.AutoSize = true;
+            lbl_CSVSize.Location = new Point(969, 180);
+            lbl_CSVSize.Name = "lbl_CSVSize";
+            lbl_CSVSize.Size = new Size(91, 32);
+            lbl_CSVSize.TabIndex = 14;
+            lbl_CSVSize.Text = "label17";
+            // 
             // lbl_TimeSQL
             // 
             lbl_TimeSQL.AutoSize = true;
@@ -116,6 +141,15 @@
             lbl_TimeSQL.Size = new Size(91, 32);
             lbl_TimeSQL.TabIndex = 10;
             lbl_TimeSQL.Text = "label15";
+            // 
+            // lbl_SQLSize
+            // 
+            lbl_SQLSize.AutoSize = true;
+            lbl_SQLSize.Location = new Point(969, 240);
+            lbl_SQLSize.Name = "lbl_SQLSize";
+            lbl_SQLSize.Size = new Size(91, 32);
+            lbl_SQLSize.TabIndex = 12;
+            lbl_SQLSize.Text = "label14";
             // 
             // lbl_TimeTxt
             // 
@@ -144,6 +178,15 @@
             lbl_TimeCSV.TabIndex = 8;
             lbl_TimeCSV.Text = "label13";
             // 
+            // lbl_BinSize
+            // 
+            lbl_BinSize.AutoSize = true;
+            lbl_BinSize.Location = new Point(969, 120);
+            lbl_BinSize.Name = "lbl_BinSize";
+            lbl_BinSize.Size = new Size(91, 32);
+            lbl_BinSize.TabIndex = 11;
+            lbl_BinSize.Text = "label13";
+            // 
             // label9
             // 
             label9.AutoSize = true;
@@ -152,6 +195,15 @@
             label9.Size = new Size(230, 32);
             label9.TabIndex = 8;
             label9.Text = "Czas zapisu do pliku";
+            // 
+            // lbl_TxtSize
+            // 
+            lbl_TxtSize.AutoSize = true;
+            lbl_TxtSize.Location = new Point(969, 60);
+            lbl_TxtSize.Name = "lbl_TxtSize";
+            lbl_TxtSize.Size = new Size(91, 32);
+            lbl_TxtSize.TabIndex = 10;
+            lbl_TxtSize.Text = "label12";
             // 
             // lbl_TimeBin
             // 
@@ -218,21 +270,21 @@
             // 
             // txtBox_inputAmount
             // 
-            txtBox_inputAmount.Location = new Point(489, 443);
+            txtBox_inputAmount.Location = new Point(491, 404);
             txtBox_inputAmount.Name = "txtBox_inputAmount";
             txtBox_inputAmount.Size = new Size(200, 39);
             txtBox_inputAmount.TabIndex = 4;
             // 
             // txtBox_outputAmount
             // 
-            txtBox_outputAmount.Location = new Point(1050, 443);
+            txtBox_outputAmount.Location = new Point(1052, 404);
             txtBox_outputAmount.Name = "txtBox_outputAmount";
             txtBox_outputAmount.Size = new Size(200, 39);
             txtBox_outputAmount.TabIndex = 5;
             // 
             // btn_submitAmount
             // 
-            btn_submitAmount.Location = new Point(1303, 439);
+            btn_submitAmount.Location = new Point(1305, 400);
             btn_submitAmount.Name = "btn_submitAmount";
             btn_submitAmount.Size = new Size(150, 46);
             btn_submitAmount.TabIndex = 6;
@@ -243,11 +295,47 @@
             // lbl_InputWarning
             // 
             lbl_InputWarning.AutoSize = true;
-            lbl_InputWarning.Location = new Point(1173, 485);
+            lbl_InputWarning.Location = new Point(1202, 467);
             lbl_InputWarning.Name = "lbl_InputWarning";
             lbl_InputWarning.Size = new Size(91, 32);
             lbl_InputWarning.TabIndex = 9;
             lbl_InputWarning.Text = "label14";
+            // 
+            // lbl_ReadTxt
+            // 
+            lbl_ReadTxt.AutoSize = true;
+            lbl_ReadTxt.Location = new Point(647, 60);
+            lbl_ReadTxt.Name = "lbl_ReadTxt";
+            lbl_ReadTxt.Size = new Size(91, 32);
+            lbl_ReadTxt.TabIndex = 10;
+            lbl_ReadTxt.Text = "label12";
+            // 
+            // lbl_ReadBin
+            // 
+            lbl_ReadBin.AutoSize = true;
+            lbl_ReadBin.Location = new Point(647, 120);
+            lbl_ReadBin.Name = "lbl_ReadBin";
+            lbl_ReadBin.Size = new Size(91, 32);
+            lbl_ReadBin.TabIndex = 11;
+            lbl_ReadBin.Text = "label13";
+            // 
+            // lbl_ReadSQL
+            // 
+            lbl_ReadSQL.AutoSize = true;
+            lbl_ReadSQL.Location = new Point(647, 240);
+            lbl_ReadSQL.Name = "lbl_ReadSQL";
+            lbl_ReadSQL.Size = new Size(91, 32);
+            lbl_ReadSQL.TabIndex = 12;
+            lbl_ReadSQL.Text = "label14";
+            // 
+            // lbl_ReadCsv
+            // 
+            lbl_ReadCsv.AutoSize = true;
+            lbl_ReadCsv.Location = new Point(647, 180);
+            lbl_ReadCsv.Name = "lbl_ReadCsv";
+            lbl_ReadCsv.Size = new Size(91, 32);
+            lbl_ReadCsv.TabIndex = 13;
+            lbl_ReadCsv.Text = "label15";
             // 
             // Form1
             // 
@@ -292,5 +380,13 @@
         private Label lbl_TimeCSV;
         private Label lbl_TimeBin;
         private Label lbl_InputWarning;
+        private Label lbl_CSVSize;
+        private Label lbl_SQLSize;
+        private Label lbl_BinSize;
+        private Label lbl_TxtSize;
+        private Label lbl_ReadSQL;
+        private Label lbl_ReadCsv;
+        private Label lbl_ReadBin;
+        private Label lbl_ReadTxt;
     }
 }
