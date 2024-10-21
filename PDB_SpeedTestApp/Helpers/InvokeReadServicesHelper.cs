@@ -17,11 +17,11 @@ namespace PDB_SpeedTestApp.Helpers
         private ReadFromCsvFileService _readFromCsvFileService;
         private ReadFromTxtFileService _readFromTxtFileService;
         private ReadFromDbService _readFromDbService;
-
-        public InvokeReadServicesHelper(AppDbContext appContext)
+        private int _amount;
+        public InvokeReadServicesHelper(AppDbContext appContext, int amount)
         {
             _appContext = appContext;
-
+            _amount = amount;
             _readFromBinFileService = new ReadFromBinFileService();
             _readFromCsvFileService = new ReadFromCsvFileService();
             _readFromTxtFileService = new ReadFromTxtFileService();
@@ -36,22 +36,22 @@ namespace PDB_SpeedTestApp.Helpers
             Stopwatch sw = new Stopwatch();
 
             sw.Start();
-            _readFromBinFileService.ReadFromBinFile();
+            _readFromBinFileService.ReadFromBinFile(_amount);
             sw.Stop();
             keyValuePairs.Add("bin", sw.Elapsed.TotalMilliseconds);
 
             sw.Start();
-            _readFromCsvFileService.ReadFromCsvFile();
+            _readFromCsvFileService.ReadFromCsvFile(_amount);
             sw.Stop();
             keyValuePairs.Add("csv", sw.Elapsed.TotalMilliseconds);
             
             sw.Start();
-            _readFromTxtFileService.ReadFromTxtFile();
+            _readFromTxtFileService.ReadFromTxtFile(_amount);
             sw.Stop();
             keyValuePairs.Add("txt", sw.Elapsed.TotalMilliseconds);
             
             sw.Start();
-            _readFromDbService.ReadFromDb();
+            _readFromDbService.ReadFromDb(_amount);
             sw.Stop();
             keyValuePairs.Add("sql", sw.Elapsed.TotalMilliseconds);
 

@@ -15,7 +15,7 @@ namespace PDB_SpeedTestApp.Services.ReadServices
             _appDbContext = context;
         }
 
-        public double ReadFromDb()
+        public double ReadFromDb(int amount)
         {
             List<string> retrievedData = new List<string>();
             Stopwatch sw = new Stopwatch();
@@ -26,8 +26,9 @@ namespace PDB_SpeedTestApp.Services.ReadServices
 
                 var data = _appDbContext.basicDataDtos.ToList();
 
-                foreach (var item in data)
+                for(int i = 0; i < amount; i++)
                 {
+                    var item = data[i];
                     retrievedData.Add($"{item.Id},{item.Name},{item.Surname},{item.Phone}");
                 }
 

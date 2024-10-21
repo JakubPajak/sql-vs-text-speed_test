@@ -13,7 +13,7 @@ namespace PDB_SpeedTestApp.Services.ReadServices
         {
         }
 
-        public double ReadFromBinFile()
+        public double ReadFromBinFile(int amount)
         {
             List<string> retrievedData = new List<string>();
 
@@ -29,7 +29,8 @@ namespace PDB_SpeedTestApp.Services.ReadServices
                 using (BinaryReader reader = new BinaryReader(fs))
                 {
                     sw.Start();
-                    while (fs.Position < fs.Length)
+                    //while (fs.Position < fs.Length)
+                    for (int i = 0; i < amount; i++)
                     {
                         string name = reader.ReadString();
                         string surname = reader.ReadString();

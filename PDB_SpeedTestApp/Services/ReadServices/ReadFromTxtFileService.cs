@@ -14,7 +14,7 @@ namespace PDB_SpeedTestApp.Services.ReadServices
         {
         }
 
-        public double ReadFromTxtFile()
+        public double ReadFromTxtFile(int amount)
         {
             List<string> retrievedData = new List<string>();
 
@@ -27,7 +27,8 @@ namespace PDB_SpeedTestApp.Services.ReadServices
             using(StreamReader streamReader = new StreamReader(filePath))
             {
                 sw.Start();
-                while(!streamReader.EndOfStream)
+                //while(!streamReader.EndOfStream)
+                for(int i = 0; i < amount; i++)
                 {
                     retrievedData.Add(streamReader.ReadLine());
                 }
