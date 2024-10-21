@@ -33,27 +33,19 @@ namespace PDB_SpeedTestApp.Helpers
         public Dictionary<string, double> InvokeReadServices()
         {
             Dictionary<string, double> keyValuePairs = new Dictionary<string, double>();
-            Stopwatch sw = new Stopwatch();
+            double time = 0.0;
 
-            sw.Start();
-            _writeToBinFileService.WriteToBinaryFile(_amount);
-            sw.Stop();
-            keyValuePairs.Add("bin", sw.Elapsed.TotalMilliseconds);
+            time = _writeToBinFileService.WriteToBinaryFile(_amount);
+            keyValuePairs.Add("bin", time);
 
-            sw.Start();
-            _writeToCsvFileService.WriteToCsvFile(_amount);
-            sw.Stop();
-            keyValuePairs.Add("csv", sw.Elapsed.TotalMilliseconds);
+            time = _writeToCsvFileService.WriteToCsvFile(_amount);
+            keyValuePairs.Add("csv", time);
 
-            sw.Start();
-            _writeToToTextFileService.WriteToTextFile(_amount);
-            sw.Stop();
-            keyValuePairs.Add("txt", sw.Elapsed.TotalMilliseconds);
+            time = _writeToToTextFileService.WriteToTextFile(_amount);
+            keyValuePairs.Add("txt", time);
 
-            sw.Start();
-            _writeToDbService.WriteToDatabase(_amount);
-            sw.Stop();
-            keyValuePairs.Add("sql", sw.Elapsed.TotalMilliseconds);
+            time = _writeToDbService.WriteToDatabase(_amount);
+            keyValuePairs.Add("sql", time);
 
 
             return keyValuePairs;
