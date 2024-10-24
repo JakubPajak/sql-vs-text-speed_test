@@ -1,0 +1,119 @@
+\documentclass{report}
+\usepackage{tocloft}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[polish]{babel}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\geometry{
+    a4paper,
+    left=2.5cm,
+    right=2.5cm,
+    top=2.5cm,
+    bottom=2.5cm,
+}
+
+
+\setcounter{tocdepth}{3}
+\setlength{\cftbeforechapskip}{15pt} 
+\setlength{\cftbeforesecskip}{8pt} 
+\setlength{\cftbeforesubsecskip}{5pt} 
+\setlength{\cftbeforesubsubsecskip}{5pt}
+
+\renewcommand\thesection{\arabic{section}.}
+\renewcommand\thesubsection{\thesection\arabic{subsection}.}
+\renewcommand\thesubsubsection{\thesubsection\arabic{subsubsection}.}
+\setcounter{secnumdepth}{3}
+
+
+\begin{document}
+
+
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    \begin{figure}
+        \centering 
+        \includegraphics[width=0.5\textwidth]{src/logo.png}
+    \end{figure}
+    \Huge
+    Przemysłowe Bazy Danych
+    \par
+    
+    \vspace*{1cm}
+
+    \vspace{0.5cm}
+    \LARGE \textit{Aplikacja testująca szybkość zapisu do plików tekstowych oraz bazy danych MS SQL Server}
+    
+    \vspace{1.5cm}
+    
+    \textbf{Autorzy:} 
+    \par
+    Jakub Pająk
+    \par
+    Kacper Stiborski
+    \vspace*{1.5cm}
+    \par AiR Grupa 5TI
+    
+    \vfill
+    
+    \Large Gliwice 2024 
+
+\end{titlepage}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{\LARGE Wprowadzenie}
+\subsection{\Large Cel projektu}
+
+Celem projektu była implementacja aplikacji desktopowej, której zadaniem było wykonywanie operacji na plikach tekstowych oraz bazie danych. Aplikacja miała umożliwiać zapis określonej przez użytkownika liczby rekordów do pliku tekstowego oraz ich odczyt, a także dokonywać pomiaru czasu niezbędnego do wykonania tych operacji. Dodatkowo, projekt zakładał realizację analogicznych operacji na bazie danych MS SQL Server, z uwzględnieniem zapisu i odczytu rekordów oraz pomiaru wydajności obu procesów. Celem porównania efektywności operacji na plikach oraz bazie danych, aplikacja miała dostarczyć użytkownikowi czytelne informacje o czasie trwania poszczególnych zadań.
+
+\section{\LARGE Realizacja projektu}
+
+\subsection{\Large Interfejs użytkownika}
+
+Interfejs użytkownika został zaprojektowany przy użyciu wbudowanego projektanta graficznego, będącego częścią frameworka \textit{Windows Forms}. Proces ten polegał na wybieraniu z przybornika (ang. \textit{Toolbox}) odpowiednich elementów funkcjonalnych, takich jak przyciski, etykiety czy pola tekstowe, i umieszczaniu ich na obszarze roboczym okna aplikacji. Dzięki narzędziu \textit{Properties}, możliwe było szczegółowe dostosowanie wyglądu i zachowania poszczególnych kontrolek do specyficznych wymagań projektowych, takich jak rozmiar, położenie, czcionka, czy reakcje na zdarzenia użytkownika.
+
+\subsection{\Large Obsługa zdarzeń i logika aplikacji}
+
+Funkcja odpowiedzialna za inicjalizację oraz obsługę zdarzeń na głównym widoku aplikacji ma prostą, lecz efektywną strukturę. W konstruktorze następuje inicjalizacja widoku oraz przypisanie wartości początkowych zmiennym niezbędnym do działania aplikacji. Wszystkie kolejne funkcje związane z obsługą zdarzeń są generowane automatycznie przez Visual Studio, na przykład poprzez dwukrotne kliknięcie na kontrolkę w widoku projektanta. Tak właśnie zrealizowano obsługę przycisków w opisywanej aplikacji.
+
+Główna funkcja logiki aplikacji wywołuje dwie metody pomocnicze: \textit{InvokeWriteServices()} oraz \textit{InvokeReadServices()}. Metody te z kolei korzystają z odpowiednich klas, które obsługują zapis i odczyt danych, zwracając wyniki w postaci zmiennej typu \textit{Dictionary<string, double>}. Klucz typu \textit{string} odpowiada za identyfikację typu pliku, natomiast wartość typu \textit{double} przechowuje czas potrzebny na wykonanie operacji.
+
+Następnie, czasy operacji są przypisywane do obiektów typu \textit{Label}, co pozwala na ich wyświetlenie w interfejsie użytkownika, dostarczając czytelne informacje o wydajności działania aplikacji.
+
+\subsection{\Large Implementacja metod zapisu do pliku}
+
+Wszystkie metody odpowiedzialne za zapis do pliku tekstowego są do siebie bardzo podobne. Pierwszym krokiem jest wybranie odpowiedniej ścieżki, w której plik zostanie zapisany. W języku C\# można wykorzystać klasę \textit{Environment}, co umożliwia tworzenie dynamicznych ścieżek zależnych od systemu operacyjnego użytkownika.
+
+Kolejny etap to wygenerowanie odpowiedniej ilości rekordów. Dane są generowane za pomocą biblioteki \textit{Bogus}, która pozwala na generowanie realistycznie wyglądających danych testowych, co znacząco ułatwia testowanie aplikacji.
+
+Zasadnicza różnica między klasami obsługującymi zapis do plików różnych typów dotyczy jedynie metody samego zapisu. Dla plików binarnych używana jest klasa \textit{BinaryWriter}, natomiast dla plików tekstowych i CSV stosuje się klasę \textit{StreamWriter}. Dzięki temu każda metoda zapisu jest dostosowana do specyfiki odpowiedniego formatu pliku.
+
+\subsection{\Large Implementacja zapisu do bazy danych}
+
+Proces zapisu do bazy danych wymagał zainstalowania odpowiednich paczek, aby umożliwić korzystanie z \textit{Entity Framework}. Wymagane paczki to: 
+\begin{itemize} 
+    \item \textit{Microsoft.EntityFrameworkCore} 
+    \item \textit{Microsoft.EntityFrameworkCore.SqlServer} 
+    \item \textit{Microsoft.EntityFrameworkCore.Tools} 
+\end{itemize}
+
+Dodatkowo, do przeprowadzenia migracji, czyli sposobu, w jaki \textit{Entity Framework} zarządza zmianami w strukturze bazy danych, konieczne było upewnienie się, że pakiet \textit{.NET CLI} jest zainstalowany.
+
+Pierwszym krokiem integracji aplikacji z bazą danych było stworzenie modelu danych. W omawianej aplikacji model ten jest reprezentowany przez klasę \textit{BasicDataDto.cs}, która odpowiada encji bazodanowej. Następnie, w celu skonfigurowania modelu, konieczne było nadpisanie metody \textit{OnModelCreating()} w klasie dziedziczącej po \textit{DbContext}. Taki zabieg informuje \textit{Entity Framework}, że dana klasa odpowiada za konfigurację struktury bazy danych.
+
+Aby aplikacja mogła komunikować się z bazą danych, musiała zostać uruchomiona wewnątrz klauzuli \textit{using} w funkcji \textit{Main()}, co zapewnia odpowiednie zarządzanie połączeniami z bazą podczas działania programu.
+
+Sam proces zapisu danych do bazy jest stosunkowo prosty. Do kontekstu bazy danych dodawane są nowe rekordy, po czym metoda \textit{SaveChanges()} zapisuje zmiany w bazie danych, zapewniając trwałość operacji.
+
+\end{document}
