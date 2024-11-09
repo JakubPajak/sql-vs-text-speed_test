@@ -21,8 +21,8 @@ namespace PDB_SpeedTestApp.Services
 
             DirectoryInfo di = new DirectoryInfo(folderPath);
             FileInfo di_db = new FileInfo(
-                "C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\pdb_database.mdf");
-                //"C:\\Program Files\\Microsoft SQL Server\\MSSQL15.SQLEXPRESS\\MSSQL\\DATA\\PDB.mdf");
+                //"C:\\Program Files\\Microsoft SQL Server\\MSSQL16.MSSQLSERVER\\MSSQL\\DATA\\pdb_database.mdf");
+                "C:\\Program Files\\Microsoft SQL Server\\MSSQL15.SQLEXPRESS\\MSSQL\\DATA\\PDB.mdf");
                  
 
             foreach (var item in di.GetFiles())

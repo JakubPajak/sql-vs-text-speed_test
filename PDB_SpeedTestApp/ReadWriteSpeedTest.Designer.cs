@@ -200,7 +200,6 @@
             // sqlSpeedBar2
             // 
             sqlSpeedBar2.Location = new Point(3, 3);
-            sqlSpeedBar2.Maximum = 1000;
             sqlSpeedBar2.Name = "sqlSpeedBar2";
             sqlSpeedBar2.Size = new Size(150, 14);
             sqlSpeedBar2.TabIndex = 12;
@@ -338,7 +337,6 @@
             // sqlSpeedBar
             // 
             sqlSpeedBar.Location = new Point(3, 3);
-            sqlSpeedBar.Maximum = 10000;
             sqlSpeedBar.Name = "sqlSpeedBar";
             sqlSpeedBar.Size = new Size(150, 14);
             sqlSpeedBar.TabIndex = 15;
@@ -362,7 +360,6 @@
             // csvSpeedBar
             // 
             csvSpeedBar.Location = new Point(3, 3);
-            csvSpeedBar.Maximum = 1000;
             csvSpeedBar.Name = "csvSpeedBar";
             csvSpeedBar.Size = new Size(150, 14);
             csvSpeedBar.TabIndex = 16;
@@ -395,7 +392,6 @@
             // binSpeedBar
             // 
             binSpeedBar.Location = new Point(3, 3);
-            binSpeedBar.Maximum = 1000;
             binSpeedBar.Name = "binSpeedBar";
             binSpeedBar.Size = new Size(150, 14);
             binSpeedBar.TabIndex = 17;
@@ -428,7 +424,6 @@
             // txtSpeedBar
             // 
             txtSpeedBar.Location = new Point(3, 3);
-            txtSpeedBar.Maximum = 1000;
             txtSpeedBar.Name = "txtSpeedBar";
             txtSpeedBar.Size = new Size(150, 14);
             txtSpeedBar.TabIndex = 11;

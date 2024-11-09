@@ -15,8 +15,8 @@ namespace PDB_SpeedTestApp
             // see https://aka.ms/applicationconfiguration.
 
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
-            optionsBuilder.UseSqlServer(@"Server=jakubpajak_asus;Database=pdb_database;Trusted_Connection=True;TrustServerCertificate=True;");
-            //optionsBuilder.UseSqlServer(@"Server=KACPER\SQLEXPRESS;Database=PDB;Trusted_Connection=True;TrustServerCertificate=True;");
+            //optionsBuilder.UseSqlServer(@"Server=jakubpajak_asus;Database=pdb_database;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(@"Server=KACPER\SQLEXPRESS;Database=PDB;Trusted_Connection=True;TrustServerCertificate=True;");
             var dbContextOptions = optionsBuilder.Options;
 
             ApplicationConfiguration.Initialize();
