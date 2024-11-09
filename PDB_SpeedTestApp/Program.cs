@@ -24,7 +24,7 @@ namespace PDB_SpeedTestApp
             using (var context = new AppDbContext(dbContextOptions))
             {
                 context.Database.Migrate();
-                Application.Run(new Form1(context));
+                Application.Run(new ReadWriteSpeedTest(context));
             }
         }
     }
