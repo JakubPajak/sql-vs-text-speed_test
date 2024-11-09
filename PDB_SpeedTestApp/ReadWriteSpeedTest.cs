@@ -51,9 +51,12 @@ namespace PDB_SpeedTestApp
 
             var writeHelper = new InvokeWriteServices(_context, amount);
             Dictionary<string, double> elapsedTimeForFiles_Write = writeHelper.InvokeReadServices();
+<<<<<<< HEAD:PDB_SpeedTestApp/ReadWriteSpeedTest.cs
             int[] speed = new int[4];
             //var readHelper = new InvokeReadServicesHelper(_context);
             //Dictionary<string, double> elapsedTimeForFiles_Read = readHelper.InvokeReadServices();
+=======
+>>>>>>> 7dd0e661be05a185e15b8779d6009c225fd64cde:PDB_SpeedTestApp/Form1.cs
 
             GetFileSizeService getFileSizeService = new GetFileSizeService();
             var sizes = getFileSizeService.GetFileSize();
@@ -68,11 +71,6 @@ namespace PDB_SpeedTestApp
             lbl_TimeCSV.Text = elapsedTimeForFiles_Write["csv"].ToString();
             lbl_TimeTxt.Text = elapsedTimeForFiles_Write["txt"].ToString();
             lbl_TimeSQL.Text = elapsedTimeForFiles_Write["sql"].ToString();
-
-            //lbl_ReadBin.Text = elapsedTimeForFiles_Read["bin"].ToString();
-            //lbl_ReadCsv.Text = elapsedTimeForFiles_Read["csv"].ToString();
-            //lbl_ReadTxt.Text = elapsedTimeForFiles_Read["txt"].ToString();
-            //lbl_ReadSQL.Text = elapsedTimeForFiles_Read["sql"].ToString();
 
 
             if (sizes.Count == 4)

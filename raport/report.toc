@@ -1,0 +1,8 @@
+\babel@toc {polish}{}\relax 
+\contentsline {section}{\numberline {1.}\LARGE Wprowadzenie}{2}{}%
+\contentsline {subsection}{\numberline {1.1.}\Large Cel projektu}{2}{}%
+\contentsline {section}{\numberline {2.}\LARGE Realizacja projektu}{2}{}%
+\contentsline {subsection}{\numberline {2.1.}\Large Interfejs użytkownika}{2}{}%
+\contentsline {subsection}{\numberline {2.2.}\Large Obsługa zdarzeń i logika aplikacji}{2}{}%
+\contentsline {subsection}{\numberline {2.3.}\Large Implementacja metod zapisu do pliku}{2}{}%
+\contentsline {subsection}{\numberline {2.4.}\Large Implementacja zapisu do bazy danych}{2}{}%
