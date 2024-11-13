@@ -4,5 +4,13 @@
 \contentsline {section}{\numberline {2.}\LARGE Realizacja projektu}{2}{}%
 \contentsline {subsection}{\numberline {2.1.}\Large Interfejs użytkownika}{2}{}%
 \contentsline {subsection}{\numberline {2.2.}\Large Obsługa zdarzeń i logika aplikacji}{2}{}%
-\contentsline {subsection}{\numberline {2.3.}\Large Implementacja metod zapisu do pliku}{2}{}%
-\contentsline {subsection}{\numberline {2.4.}\Large Implementacja zapisu do bazy danych}{2}{}%
+\contentsline {subsection}{\numberline {2.3.}\Large Implementacja metod zapisu do pliku}{3}{}%
+\contentsline {subsection}{\numberline {2.4.}\Large Implementacja zapisu do bazy danych}{5}{}%
+\contentsline {subsection}{\numberline {2.5.}\Large Implementacja metod odczytu z pliku}{6}{}%
+\contentsline {subsection}{\numberline {2.6.}\Large Implementacja odczytu danych z bazy danych}{8}{}%
+\contentsline {section}{\numberline {3.}Działanie aplikacji}{9}{}%
+\contentsline {subsection}{\numberline {3.1.}Generacja pliku wsadowego oraz jego zapis}{9}{}%
+\contentsline {subsection}{\numberline {3.2.}Odczyt pliku}{9}{}%
+\contentsline {subsection}{\numberline {3.3.}Wizualizacja danych}{9}{}%
+\contentsline {subsection}{\numberline {3.4.}Zabezpieczenia}{9}{}%
+\contentsline {section}{\numberline {4.}Wnioski}{12}{}%
