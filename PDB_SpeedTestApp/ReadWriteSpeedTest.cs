@@ -8,6 +8,7 @@ namespace PDB_SpeedTestApp
     public partial class ReadWriteSpeedTest : Form
     {
         private readonly AppDbContext _context;
+        private int writtenAmount;
 
         public ReadWriteSpeedTest(AppDbContext context)
         {
@@ -48,6 +49,17 @@ namespace PDB_SpeedTestApp
         private void submitWrite_Click(object sender, EventArgs e)
         {
             int amount = txtBox_inputAmount.Text.Length > 0 ? int.Parse(txtBox_inputAmount.Text) : 0;
+            
+
+            // zabezpieczenie i return
+            if (amount <= 0.0)
+            {
+                lbl_InputWarning.Text = "UWAGA! Proszê wprowadziæ poprawn¹ iloœæ danych do generacji (n > 0).";
+                lbl_InputWarning.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+               
+            // nadpisz zmienna do oczytu
             txtBox_outputAmount.Text = amount.ToString();
 
             var writeHelper = new InvokeWriteServices(_context, amount);
@@ -59,11 +71,9 @@ namespace PDB_SpeedTestApp
             GetFileSizeService getFileSizeService = new GetFileSizeService();
             var sizes = getFileSizeService.GetFileSize();
 
-            if (amount == 0.0)
-            {
-                lbl_InputWarning.Text = "UWAGA! Proszê wprowadziæ poprawn¹ iloœæ danych do generacji (n > 0).";
-                lbl_InputWarning.ForeColor = System.Drawing.Color.Red;
-            }
+            
+
+            writtenAmount = amount;
 
             lbl_TimeBin.Text = elapsedTimeForFiles_Write["bin"].ToString();
             lbl_TimeCSV.Text = elapsedTimeForFiles_Write["csv"].ToString();
@@ -81,66 +91,54 @@ namespace PDB_SpeedTestApp
 
             // funkcja do obliczania predkosc zapisu kB/s
             speed[0] = (int)(sizes[0] / elapsedTimeForFiles_Write["bin"] / 1000);
-            switch (speed[0] / 100)
-            {
-                case 0:
-                    binSpeedBar.Maximum = 100;
-                    break;
-                case 1:
-                    binSpeedBar.Maximum = 1000;
-                    break;
-                case 2:
-                    binSpeedBar.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[0] < 100)
+                binSpeedBar.Maximum = 100;
+            else if(speed[0] < 1000)
+                binSpeedBar.Maximum = 1000;
+            else if(speed[0] < 10000)
+                binSpeedBar.Maximum = 10000;
+
             binSpeedBar.Value = speed[0];
             binSpeedLb.Text = speed[0].ToString() + "MB/s";
 
             speed[1] = (int)(sizes[1] / elapsedTimeForFiles_Write["csv"] / 1000);
-            switch (speed[1] / 100)
-            {
-                case 0:
-                    csvSpeedBar.Maximum = 100;
-                    break;
-                case 1:
-                    csvSpeedBar.Maximum = 1000;
-                    break;
-                case 2:
-                    csvSpeedBar.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[1] < 100)
+                csvSpeedBar.Maximum = 100;
+            else if(speed[1] < 1000)
+                csvSpeedBar.Maximum = 1000;
+            else if(speed[1] < 10000)
+                csvSpeedBar.Maximum = 10000;
+
             csvSpeedBar.Value = speed[1];
             csvSpeedLb.Text = speed[1].ToString() + "MB/s";
 
             speed[2] =  (int)(sizes[2] / elapsedTimeForFiles_Write["txt"] / 1000);
-            switch (speed[2] / 100)
-            {
-                case 0:
-                    txtSpeedBar.Maximum = 100;
-                    break;
-                case 1:
-                    txtSpeedBar.Maximum = 1000;
-                    break;
-                case 2:
-                    txtSpeedBar.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[2] < 100)
+                txtSpeedBar.Maximum = 100;
+            else if(speed[2] < 1000)
+                txtSpeedBar.Maximum = 1000;
+            else if(speed[2] < 10000)
+                txtSpeedBar.Maximum = 10000; 
+            
             txtSpeedBar.Value = speed[2];
             txtSpeedLb.Text = speed[2].ToString() + "MB/s";
 
             speed[3] = (int)(sizes[3] / elapsedTimeForFiles_Write["sql"] / 1000);
-            switch (speed[3] / 100)
-            {
-                case 0:
-                    sqlSpeedBar.Maximum = 100;
-                    break;
-                case 1:
-                    sqlSpeedBar.Maximum = 1000;
-                    break;
-                case 2:
-                    sqlSpeedBar.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[3] < 100)
+                sqlSpeedBar.Maximum = 100;
+            else if(speed[3] < 1000)
+                sqlSpeedBar.Maximum = 1000;
+            else if(speed[3] < 10000)
+                sqlSpeedBar.Maximum = 10000;
+
             sqlSpeedBar.Value = speed[3];
             sqlSpeedLb.Text = speed[3].ToString() + "MB/s";
         }
@@ -150,16 +148,21 @@ namespace PDB_SpeedTestApp
             int amount = txtBox_outputAmount.Text.Length > 0 ? int.Parse(txtBox_outputAmount.Text) : 0;
             int[] speed = new int[4];
 
+            // zabepieczenie i return
+            if (amount > writtenAmount)
+            {
+                lbl_InputWarning.Text = "UWAGA! Proszê wprowadziæ poprawn¹ iloœæ danych do odczytu (n < n_zapisane).";
+                lbl_InputWarning.ForeColor = System.Drawing.Color.Red;
+                return;
+            }
+
             var readHelper = new InvokeReadServicesHelper(_context, amount);
             Dictionary<string, double> elapsedTimeForFiles_Read = readHelper.InvokeReadServices();
 
             GetFileSizeService getFileSizeService = new GetFileSizeService();
             var sizes = getFileSizeService.GetFileSize();
-            //if (amount == 0.0)
-            //{
-            //    lbl_InputWarning.Text = "UWAGA! Proszê wprowadziæ poprawn¹ iloœæ danych do odczytu ( >0 ).";
-            //    lbl_InputWarning.ForeColor = System.Drawing.Color.Red;
-            //}
+
+            
 
             lbl_ReadBin.Text = elapsedTimeForFiles_Read["bin"].ToString();
             lbl_ReadCsv.Text = elapsedTimeForFiles_Read["csv"].ToString();
@@ -169,66 +172,54 @@ namespace PDB_SpeedTestApp
             // funkcja do obliczania predkosc zapisu kB/s
             // / 1000 bo MB/s a nie kB/s
             speed[0] = (int)(sizes[0] / elapsedTimeForFiles_Read["bin"]/1000);
-            switch (speed[0] / 100)
-            {
-                case 0:
-                    binSpeedBar2.Maximum = 100;
-                    break;
-                case 1:
-                    binSpeedBar2.Maximum = 1000;
-                    break;
-                case 2:
-                    binSpeedBar2.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[0] < 100)
+                binSpeedBar2.Maximum = 100;
+            else if(speed[0] < 1000)
+                binSpeedBar2.Maximum = 1000;
+            else if(speed[0] < 10000)
+                binSpeedBar2.Maximum = 10000;
+
             binSpeedBar2.Value = speed[0];
             binSpeedLb2.Text = speed[0].ToString() + "MB/s";
 
             speed[1] = (int)(sizes[1] / elapsedTimeForFiles_Read["csv"]/1000);
-            switch (speed[1] / 100)
-            {
-                case 0:
-                    csvSpeedBar2.Maximum = 100;
-                    break;
-                case 1:
-                    csvSpeedBar2.Maximum = 1000;
-                    break;
-                case 2:
-                    csvSpeedBar2.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[1] < 100)
+                csvSpeedBar2.Maximum = 100;
+            else if(speed[1] < 1000)
+                csvSpeedBar2.Maximum = 1000;
+            else if(speed[1] < 10000)
+                csvSpeedBar2.Maximum = 10000;
+
             csvSpeedBar2.Value = speed[1];
             csvSpeedLb2.Text = speed[1].ToString() + "MB/s";
 
             speed[2] = (int)(sizes[2] / elapsedTimeForFiles_Read["txt"]/1000);
-            switch (speed[2] / 100)
-            {
-                case 0:
-                    txtSpeedBar2.Maximum = 100;
-                    break;
-                case 1:
-                    txtSpeedBar2.Maximum = 1000;
-                    break;
-                case 2:
-                    txtSpeedBar2.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[2] < 100)
+                txtSpeedBar2.Maximum = 100;
+            else if(speed[2] < 1000)
+                txtSpeedBar2.Maximum = 1000;
+            else if(speed[2] < 10000)
+                txtSpeedBar2.Maximum = 10000;
+
             txtSpeedBar2.Value = speed[2];
             txtSpeedLb2.Text = speed[2].ToString() + "MB/s";
 
             speed[3] = (int)(sizes[3] / elapsedTimeForFiles_Read["sql"]/1000);
-            switch (speed[3] / 100)
-            {
-                case 0:
-                    sqlSpeedBar2.Maximum = 100;
-                    break;
-                case 1:
-                    sqlSpeedBar2.Maximum = 1000;
-                    break;
-                case 2:
-                    sqlSpeedBar2.Maximum = 10000;
-                    break;
-            }
+
+            // skalowanie
+            if (speed[3] < 100)
+                sqlSpeedBar2.Maximum = 100;
+            else if (speed[3] < 1000)
+                sqlSpeedBar2.Maximum = 1000;
+            else if (speed[3] < 10000)
+                sqlSpeedBar2.Maximum = 10000;
+
             sqlSpeedBar2.Value = speed[3];
             sqlSpeedLb2.Text = speed[3].ToString() + "MB/s";
         }

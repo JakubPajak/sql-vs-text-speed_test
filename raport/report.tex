@@ -136,14 +136,40 @@ Po zapisaniu plików można przejść do kolejnego okienka, w którym należy po
 \end{figure}
 
 \subsection{Wizualizacja danych}
-W tabeli poniżej okienek do wprowadzania wartości po zapisie i odczycie aktualizowana jest tabela z właściwościami: czasu zapisu i odczytu w milisekundach, prędkości zapisu i odczytu w MB/s oraz rozmiarem pliku w bajtach.
-\subsection{Zabezpieczenia WSM TO TRZEBA DOROBIC XD}
-Aplikacja posiada zabezpiczenia przed wpisaniem ujemnej wartości rekrodów oraz przed wybraniem do odczytu większej ilości rekordów niż zostały zapisane, co mogłoby powodować poważne usterki programu.
+W tabeli poniżej okienek do wprowadzania wartości po zapisie i odczycie aktualizowana jest tabela z właściwościami: czasu zapisu i odczytu w milisekundach, prędkości zapisu i odczytu w MB/s oraz rozmiarem pliku w bajtach. Dodatkowo paski obrazujące prędkość zapisu skalują się wraz z rosnącą wartością prędkości, aby uniknąć błędów programu.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{img/tab.jpg}
+\caption{Tabela danych}
+\end{figure}
+
+\subsection{Zabezpieczenia}
+Aplikacja posiada zabezpiczenia przed wpisaniem ujemnej wartości rekrodów oraz przed wybraniem do odczytu większej ilości rekordów niż zostały zapisane, co mogłoby powodować poważne usterki programu. Jak w akapicie wyżej, zastosowano także zabepieczenie przed przepełnieniem wartości wizualizowanej przez paski postępu.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{img/zapis_error.jpg}
+\caption{Błąd zapisu}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{img/odczyt_error.jpg}
+\caption{Błąd odczytu}
+\end{figure}
 
 \section{Wnioski}
 Porobic kilka pomiarow i dac tu zdjecia tabelek.
 
+\begin{figure}[h]
+\centering
+\includegraphics[width=15cm]{img/tabela-porwn.jpg}
+\caption{Porownanie}
+\end{figure}
+
 Zauważalnie zapis do bazy trwa najdłużej, natomiast odczyt z niej najkrócej. <chyba>
+
 
 
 \end{document}
